@@ -82,6 +82,6 @@ for i, pdb_file in enumerate(pdb_files):
         print(f"{i + 1} files processed")
 
 # Save the dataset of graph data objects to a file
-with open('/swissprot/graphs.pkl', 'wb') as f:
+with open('swissprot/graphs.pkl', 'wb') as f:
     pickle.dump(graphs, f)
 print("Done")
