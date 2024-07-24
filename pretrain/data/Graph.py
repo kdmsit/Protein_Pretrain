@@ -67,7 +67,7 @@ def pdb_to_graph(pdb_path, k_neighbors=5):
     return data
 
 # Directory containing PDB files
-pdb_directory = '/swissprot/'
+pdb_directory = 'swissprot/'
 pdb_files = [f for f in os.listdir(pdb_directory) if os.path.splitext(f)[1] == ".pdb"]
 print("The Number of files:", len(pdb_files))
 
