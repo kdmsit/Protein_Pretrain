@@ -2,6 +2,7 @@ import numpy as np
 import torch
 import os
 import pickle
+import gzip
 from sklearn.preprocessing import LabelEncoder
 from sklearn.neighbors import kneighbors_graph
 from torch_geometric.utils import negative_sampling
@@ -68,15 +69,17 @@ def pdb_to_graph(pdb_path, k_neighbors=5):
 
 # Directory containing PDB files
 pdb_directory = 'swissprot/'
-pdb_files = [f for f in os.listdir(pdb_directory) if os.path.splitext(f)[1] == ".pdb"]
+pdb_files = [f for f in os.listdir(pdb_directory) if os.path.splitext(f)[1] == ".pdb.gz"]
 print("The Number of files:", len(pdb_files))
 
 # Process PDB files to create graph data objects
 graphs = []
 for i, pdb_file in enumerate(pdb_files):
     pdb_path = os.path.join(pdb_directory, pdb_file)
-    print(pdb_path)
-    data = pdb_to_graph(pdb_path)
+    with gzip.open(pdb_path, 'rb') as f:
+        file_content = f.read()
+    # data = pdb_to_graph(pdb_path)
+    data = pdb_to_graph(file_content)
     if data:
         graphs.append(data)
     if (i + 1) % 1000 == 0:
