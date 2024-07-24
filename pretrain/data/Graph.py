@@ -69,7 +69,7 @@ def pdb_to_graph(pdb_path, k_neighbors=5):
 
 # Directory containing PDB files
 pdb_directory = 'swissprot/'
-pdb_files = [f for f in os.listdir(pdb_directory) if os.path.splitext(f)[1] == ".pdb.gz"]
+pdb_files = [f for f in os.listdir(pdb_directory) if os.path.splitext(f)[1] == ".gz"]
 print("The Number of files:", len(pdb_files))
 
 # Process PDB files to create graph data objects
