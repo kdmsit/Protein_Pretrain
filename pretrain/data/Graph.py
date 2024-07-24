@@ -75,6 +75,7 @@ print("The Number of files:", len(pdb_files))
 graphs = []
 for i, pdb_file in enumerate(pdb_files):
     pdb_path = os.path.join(pdb_directory, pdb_file)
+    print(pdb_path)
     data = pdb_to_graph(pdb_path)
     if data:
         graphs.append(data)
