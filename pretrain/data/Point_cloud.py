@@ -33,7 +33,7 @@ def pdb_to_point_cloud(pdb_path, desired_num_points=2048):
     return coordinates
 
 # Directory containing PDB files
-pdb_directory = "/swissprot/"
+pdb_directory = "swissprot/"
 pdb_files = [f for f in os.listdir(pdb_directory) if os.path.splitext(f)[1] == ".pdb"]
 print("The Number of files:", len(pdb_files))
 dataset = []
@@ -48,5 +48,5 @@ for i, pdb_file in enumerate(pdb_files):
 print("Done")
 
 # Save the dataset of point clouds to a file
-with open('/swissprot/pointcloud.pkl', 'wb') as f:
+with open('swissprot/pointcloud.pkl', 'wb') as f:
     pickle.dump(dataset, f)
